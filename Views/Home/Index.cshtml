@@ -2,7 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="page-header" style="margin-top:60px;">
+    <div>
+        <div class="page-eyebrow">Human Resources</div>
+        <h1 class="page-title">Welcome to Employee Management System</h1>
+        <p class="page-subtitle">Effortlessly manage employee records, departments, and salaries — all in one place.</p>
+    </div>
+</div>
+
+<div class="welcome-grid" style="display:flex; gap:20px; flex-wrap:wrap; margin-top:30px;">
+    <div class="card" style="flex:1; min-width:280px; background-color:#f8f9fa; border-radius:8px; padding:20px;">
+        <h3 style="margin-bottom:10px;">👥 Employee Directory</h3>
+        <p style="color:#555;">View, edit, and manage all employee profiles in your organization.</p>
+        <a asp-controller="Employees" asp-action="Index" class="btn btn-primary">Go to Employee List</a>
+    </div>
+
+    <div class="card" style="flex:1; min-width:280px; background-color:#f8f9fa; border-radius:8px; padding:20px;">
+        <h3 style="margin-bottom:10px;">➕ Add New Employee</h3>
+        <p style="color:#555;">Quickly onboard new team members and assign them to departments.</p>
+        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Create Employee</a>
+    </div>
+
+    <div class="card" style="flex:1; min-width:280px; background-color:#f8f9fa; border-radius:8px; padding:20px;">
+        <h3 style="margin-bottom:10px;">📊 Dashboard Overview</h3>
+        <p style="color:#555;">Track total employees, average salary, and department count at a glance.</p>
+        <a asp-controller="Employees" asp-action="Index" class="btn btn-secondary">View Dashboard</a>
+    </div>
+</div>
+
+<div style="margin-top:50px; text-align:center; color:#777;">
+    <p>© 2026 - EmployeeCRUDApp | Built with ASP.NET Core MVC</p>
 </div>

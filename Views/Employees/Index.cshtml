@@ -1,0 +1,75 @@
+﻿@model IEnumerable<EmployeeCRUDApp.Models.Employee>
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<div id="page-index" class="page active">
+    <div class="page-header">
+        <div>
+            <div class="page-eyebrow">Human Resources</div>
+            <h1 class="page-title">Employee List</h1>
+            <p class="page-subtitle">Manage and view all employees in your organization.</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Create New Employee
+        </a>
+    </div>
+
+    <div class="stats-strip">
+        <div class="stat-card">
+            <div class="stat-label">Total Employees</div>
+            <div class="stat-value">@ViewBag.TotalEmployees</div>
+            <div class="stat-sub">Active headcount</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Avg. Salary</div>
+            <div class="stat-value">@ViewBag.AvgSalary</div>
+            <div class="stat-sub">Across all roles</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Departments</div>
+            <div class="stat-value">@ViewBag.DeptCount</div>
+            <div class="stat-sub">Active units</div>
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-toolbar" style="display:flex; justify-content:flex-end; align-items:center;">
+            <span class="table-count">Showing <strong>@Model.Count()</strong> records</span>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Position</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="emp-cell">
+                                <div class="emp-avatar">@emp.Name.Substring(0, 1).ToUpper()</div>
+                                <div>
+                                    <div class="emp-name">@emp.Name</div>
+                                    <div class="emp-id">EMP-@emp.EmployeeId.ToString("D3")</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@emp.Position</td>
+                        <td><span class="badge badge-dept">@emp.Department</span></td>
+                        <td><span class="salary">@emp.Salary.ToString("C")</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

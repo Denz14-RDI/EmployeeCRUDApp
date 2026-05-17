@@ -1,0 +1,77 @@
+﻿@model EmployeeCRUDApp.Models.Employee
+@{
+    ViewData["Title"] = "Employee Details";
+    var prevId = ViewBag.PrevEmployeeId;
+    var nextId = ViewBag.NextEmployeeId;
+}
+
+<div class="page-header" style="margin-top: 40px;">
+    <div>
+        <div class="page-eyebrow">Human Resources</div>
+        <h1 class="page-title">Employee Details</h1>
+        <p class="page-subtitle">Full profile for the selected employee.</p>
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back to List
+    </a>
+</div>
+
+<div class="detail-card" style="margin-top: 20px;">
+    <div class="detail-card-banner">
+        <div class="detail-avatar">@Model.Name.Substring(0, 1).ToUpper()</div>
+        <div class="detail-name">@Model.Name</div>
+        <div class="detail-position">@Model.Position &middot; @Model.Department</div>
+    </div>
+
+    <div class="detail-body">
+        <div class="detail-grid">
+            <div class="detail-field">
+                <div class="detail-field-label">Employee ID</div>
+                <div class="detail-field-value accent">@Model.EmployeeId</div>
+            </div>
+
+            <div class="detail-field">
+                <div class="detail-field-label">Department</div>
+                <div class="detail-field-value">@Model.Department</div>
+            </div>
+
+            <div class="detail-field">
+                <div class="detail-field-label">Position</div>
+                <div class="detail-field-value">@Model.Position</div>
+            </div>
+
+            <div class="detail-field">
+                <div class="detail-field-label">Monthly Salary</div>
+                <div class="detail-field-value gold">@Model.Salary.ToString("C")</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a asp-action="Edit" asp-route-id="@Model.EmployeeId" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.EmployeeId" class="btn btn-outline-danger">Delete</a>
+    </div>
+
+    <div class="detail-navigation" style="margin-top: 20px; display:flex; justify-content:space-between;">
+        @if (prevId != 0)
+        {
+            <a asp-action="Details" asp-route-id="@prevId" class="btn btn-secondary">← Previous</a>
+        }
+        else
+        {
+            <a class="btn btn-secondary disabled">← Previous</a>
+        }
+
+        @if (nextId != 0)
+        {
+            <a asp-action="Details" asp-route-id="@nextId" class="btn btn-secondary">Next →</a>
+        }
+        else
+        {
+            <a class="btn btn-secondary disabled">Next →</a>
+        }
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EmployeeCRUDApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ems-styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="demo-nav">
+            <span>Navigation →</span>
+            <!-- ✅ Keep only Index, Details, Create -->
+            <a asp-controller="Employees" asp-action="Index" class="btn btn-primary btn-sm">📋 Employee List</a>
+            <a asp-controller="Employees" asp-action="Details" asp-route-id="1" class="btn btn-secondary btn-sm">👤 Details</a>
+            <a asp-controller="Employees" asp-action="Create" class="btn btn-gold btn-sm">➕ Create</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - EmployeeCRUDApp
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
